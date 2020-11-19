@@ -1,20 +1,16 @@
 package com.airport.domain.aircraft;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Getter
-@Setter
 public class AircraftDto {
 
-    //private Long id;
+    private Long id;
     private String flightNumber;
     private LocalTime ETA;
-    private LocalDateTime ETD;
+    private LocalTime ETD;
     private int gate;
     private int passengerStatus;
     private int cargoStatus;
@@ -23,18 +19,16 @@ public class AircraftDto {
     private int fuelingStatus;
     private int cateringStatus;
 
-    public AircraftDto(String flightNumber, LocalTime ETA, LocalDateTime ETD, int gate,
-                       int passengerStatus, int cargoStatus, int cleaningStatus,
-                       int maintenanceStatus, int fuelingStatus, int cateringStatus) {
+    public AircraftDto(String flightNumber, int gate){
         this.flightNumber = flightNumber;
         this.ETA = LocalTime.now();
-        this.ETD = LocalDateTime.now();
+        this.ETD = LocalTime.now();
         this.gate = gate;
-        this.passengerStatus = passengerStatus;
-        this.cargoStatus = cargoStatus;
-        this.cleaningStatus = cleaningStatus;
-        this.maintenanceStatus = maintenanceStatus;
-        this.fuelingStatus = fuelingStatus;
-        this.cateringStatus = cateringStatus;
+        this.passengerStatus = 0;
+        this.cargoStatus = 0;
+        this.cleaningStatus = 0;
+        this.maintenanceStatus = 0;
+        this.fuelingStatus = 0;
+        this.cateringStatus = 0;
     }
 }
