@@ -22,4 +22,9 @@ public class LoadingSupervisorController {
                 loadingSupervisorMapper.mapToLoadingSupervisor(loadingSupervisorDto));
     }
 
+    @DeleteMapping(value = "deleteLoadingSupervisor")
+    public void deleteLoadingSupervisor(@RequestParam Long id){
+        loadingSupervisorService.deleteLoadingSupervisor(id);
+    }
+
 }

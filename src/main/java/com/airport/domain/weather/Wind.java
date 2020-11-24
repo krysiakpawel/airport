@@ -7,18 +7,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WeatherDto {
+public class Wind {
 
 
-    @JsonProperty("wind")
-    private Wind wind;
+    @JsonProperty("speed")
+    private double speed;
 
-    @JsonProperty("main")
-    private Main main;
+    @JsonProperty("deg")
+    private int deg;
 
 }

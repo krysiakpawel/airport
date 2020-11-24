@@ -5,18 +5,18 @@ import com.airport.domain.aircraft.Aircraft;
 import com.airport.domain.aircraft.AircraftDto;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class AircraftMapper {
 
     public Aircraft mapToAircraft(AircraftDto aircraftDto){
         return new Aircraft(
-                aircraftDto.getFlightNumber(),
-                aircraftDto.getGate());
-    }
-     public AircraftDto mapToAircraftDto(final Aircraft aircraft){
-        return new AircraftDto(
-                aircraft.getFlightNumber(),
-                aircraft.getGate());
+                aircraftDto.getFlightStatus(),
+                "AY666",
+                aircraftDto.getAirline().getAirline(),
+                aircraftDto.getArrival().getETA(),
+                aircraftDto.getArrival().getGate());
 
-     }
+    }
 }

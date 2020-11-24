@@ -1,8 +1,8 @@
 package com.airport.controller;
 
 
-import com.airport.domain.weather.WeatherDto;
 import com.airport.mapper.WeatherMapper;
+import com.airport.client.openweathermap.OpenWeatherMapClient;
 import com.airport.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +17,14 @@ public class WeatherController {
     @Autowired
     WeatherMapper weatherMapper;
 
-    @PostMapping(value = "saveWeather")
-    public void saveWeather(@RequestBody final WeatherDto weatherDto){
-        weatherService.saveWeather(weatherMapper.mapToWeather(weatherDto));
+    @Autowired
+    private OpenWeatherMapClient openWeatherMapClient;
+
+
+    @GetMapping(value = "saveActualWeather")
+    public void saveActualWeather() {
+        System.out.println(openWeatherMapClient.getWeather().getMain().getTemp());
+        weatherService.saveWeather(weatherMapper.mapToWeather(openWeatherMapClient.getWeather()));
     }
 
     @DeleteMapping(value = "deleteWeather")

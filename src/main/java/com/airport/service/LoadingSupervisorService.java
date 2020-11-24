@@ -15,4 +15,8 @@ public class LoadingSupervisorService {
     public LoadingSupervisor saveLoadingSupervisor(final LoadingSupervisor loadingSupervisor){
         return loadingSupervisorDao.save(loadingSupervisor);
     }
+
+    public void deleteLoadingSupervisor(Long id){
+        loadingSupervisorDao.deleteById(id);
+    }
 }

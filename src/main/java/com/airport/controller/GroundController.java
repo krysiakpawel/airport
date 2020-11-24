@@ -1,10 +1,13 @@
 package com.airport.controller;
 
+import com.airport.client.aviationstack.AviationStackClient;
 import com.airport.domain.aircraft.AircraftDto;
 import com.airport.mapper.AircraftMapper;
 import com.airport.service.AircraftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/ground")
@@ -16,6 +19,22 @@ public class GroundController {
     @Autowired
     private AircraftMapper aircraftMapper;
 
+    @Autowired
+    private AviationStackClient aviationStackClient;
+
+
+    @GetMapping(value = "getLandedPlanes")
+    public void getLandedPlanes(){
+//        System.out.println(aviationStackClient.getLandedAircrafts().getAirline());
+//        System.out.println(aviationStackClient.getLandedAircrafts().getArrival().getETA());
+//        System.out.println(aviationStackClient.getLandedAircrafts().getFlight().getIata());
+//
+
+        List<AircraftDto> aircraftDtoList = aviationStackClient.getLandedAircrafts();
+        for(AircraftDto aircraftDto : aircraftDtoList){
+            aircraftService.saveAircraft(aircraftMapper.mapToAircraft(aircraftDto));
+        }
+    }
 
     @PostMapping(value ="planeOnGate" )
     public void planeOnGate(@RequestBody AircraftDto aircraftDto){

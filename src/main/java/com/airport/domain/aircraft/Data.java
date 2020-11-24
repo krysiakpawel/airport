@@ -1,31 +1,20 @@
 package com.airport.domain.aircraft;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
+import lombok.Setter;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AircraftDto {
+public class Data {
 
-    @JsonProperty("flight_status")
-    private String flightStatus;
-
-    @JsonProperty("flight")
-    private Flight flight;
-
-    @JsonProperty("airline")
-    private Airline airline;
-
-    @JsonProperty("arrival")
-    private Arrival arrival;
-
-
-
+    @JsonProperty("data")
+    private AircraftDto[] aircraftDtos;
 
 }

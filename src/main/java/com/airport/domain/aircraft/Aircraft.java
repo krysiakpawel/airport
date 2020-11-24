@@ -1,5 +1,6 @@
 package com.airport.domain.aircraft;
 
+import com.airport.domain.loadingSupervisor.LoadingSupervisor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,21 +11,24 @@ import java.time.LocalTime;
 public class Aircraft {
 
     private Long id;
+    private String flightStatus;
     private String flightNumber;
-    private LocalTime ETA;
-    private LocalTime ETD;
-    private int gate;
+    private String airline;
+    private String ETA;
+    private String gate;
     private int passengerStatus;
     private int cargoStatus;
     private int cleaningStatus;
     private int maintenanceStatus;
     private int fuelingStatus;
     private int cateringStatus;
+    private LoadingSupervisor loadingSupervisor;
 
-    public Aircraft(String flightNumber, int gate){
+    public Aircraft(String flightStatus, String flightNumber, String airline, String ETA, String gate){
+        this.flightStatus = flightStatus;
         this.flightNumber = flightNumber;
-        this.ETA = LocalTime.now();
-        this.ETD = LocalTime.now();
+        this.airline = airline;
+        this.ETA = ETA;
         this.gate = gate;
         this.passengerStatus = 0;
         this.cargoStatus = 0;
@@ -54,30 +58,22 @@ public class Aircraft {
     }
 
     @Column(name = "ETA")
-    public LocalTime getETA(){
+    public String getETA(){
         return ETA;
     }
-    public void setETA(LocalTime ETA){
+    public void setETA(String ETA){
         this.ETA = ETA;
     }
 
-    @Column(name = "ETD")
-    public LocalTime getETD(){
-        return ETD;
-    }
-    public void setETD(LocalTime ETD){
-        this.ETD = ETD;
-    }
-
     @Column(name = "GATE")
-    public int getGate(){
+    public String getGate(){
         return gate;
     }
-    public void setGate(int gate){
+    public void setGate(String gate){
         this.gate = gate;
     }
 
-    @Column(name = "PASSENGER_STS")
+    @Column(name = "PSNGR_STS")
     public int getPassengerStatus(){
         return passengerStatus;
     }
@@ -95,7 +91,7 @@ public class Aircraft {
         this.cargoStatus = status;
     }
 
-    @Column(name = "CLEANING_STS")
+    @Column(name = "CLNG_STS")
     public int getCleaningStatus(){
         return cleaningStatus;
     }
@@ -104,7 +100,7 @@ public class Aircraft {
         this.cleaningStatus = status;
     }
 
-    @Column(name = "MAINTENANCE_STS")
+    @Column(name = "MNTNC_STS")
     public int getMaintenanceStatus(){
         return maintenanceStatus;
     }
@@ -113,7 +109,7 @@ public class Aircraft {
         this.maintenanceStatus = status;
     }
 
-    @Column(name = "FUELING_STS")
+    @Column(name = "FLNG_STS")
     public int getFuelingStatus(){
         return fuelingStatus;
     }
@@ -122,12 +118,22 @@ public class Aircraft {
         this.fuelingStatus = status;
     }
 
-    @Column(name = "CATERING_STS")
+    @Column(name = "CTRNG_STS")
     public int getCateringStatus(){
         return cateringStatus;
     }
 
     public void setCateringStatus(int status){
         this.cateringStatus = status;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "SPRVISOR_ID")
+    public LoadingSupervisor getLoadingSupervisor(){
+        return loadingSupervisor;
+    }
+
+    public void setLoadingSupervisor(LoadingSupervisor loadingSupervisor){
+        this.loadingSupervisor = loadingSupervisor;
     }
 }
