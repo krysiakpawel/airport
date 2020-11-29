@@ -2,9 +2,7 @@ package com.airport.domain.aircraft;
 
 import com.airport.domain.loadingSupervisor.LoadingSupervisor;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.time.LocalTime;
 
 @Entity(name = "AIRCRAFT")
 @NoArgsConstructor
@@ -46,6 +44,24 @@ public class Aircraft {
     }
     public void setId(Long id){
         this.id = id;
+    }
+
+    @Column(name = "FLGHT_STS")
+    public String getFlightStatus(){
+        return flightStatus;
+    }
+
+    public void setFlightStatus(String flightStatus) {
+        this.flightStatus = flightStatus;
+    }
+
+    @Column(name = "AIRLINE")
+    public String getAirline(){
+        return airline;
+    }
+
+    public void setAirline(String airline){
+        this.airline = airline;
     }
 
     @Column(name = "FLIGHT_NUMBER")
@@ -135,5 +151,9 @@ public class Aircraft {
 
     public void setLoadingSupervisor(LoadingSupervisor loadingSupervisor){
         this.loadingSupervisor = loadingSupervisor;
+    }
+
+    public String toString(){
+        return "Flight: " + flightNumber + airline + ". ";
     }
 }

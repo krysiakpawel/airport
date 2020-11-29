@@ -5,6 +5,7 @@ import com.airport.mapper.WeatherMapper;
 import com.airport.client.openweathermap.OpenWeatherMapClient;
 import com.airport.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,9 +22,9 @@ public class WeatherController {
     private OpenWeatherMapClient openWeatherMapClient;
 
 
+    @Scheduled(cron = "* 0/30 * * * *")
     @GetMapping(value = "saveActualWeather")
     public void saveActualWeather() {
-        System.out.println(openWeatherMapClient.getWeather().getMain().getTemp());
         weatherService.saveWeather(weatherMapper.mapToWeather(openWeatherMapClient.getWeather()));
     }
 

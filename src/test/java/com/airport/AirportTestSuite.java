@@ -16,29 +16,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class AirportTestSuite {
 
-    @Autowired
-    LoadingSupervisorDao loadingSupervisorDao;
-    @Autowired
-    AircraftDao aircraftDao;
 
-    @Test
-    public void testAircraftSaveWithSupervisor(){
-
-        //Given
-
-        Aircraft aircraft1 = new Aircraft("LH416", 2);
-        LoadingSupervisor JanKowalski = new LoadingSupervisor("Jan", "Kowalski1");
-        aircraft1.setLoadingSupervisor(JanKowalski);
-        //When
-        loadingSupervisorDao.save(JanKowalski);
-        aircraftDao.save(aircraft1);
-
-        long id = JanKowalski.getId();
-        //Then
-        Assert.assertNotEquals(0,id);
-
-
-
-
-    }
 }

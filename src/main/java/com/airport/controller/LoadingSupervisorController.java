@@ -1,7 +1,10 @@
 package com.airport.controller;
 
+import com.airport.domain.aircraft.Aircraft;
+import com.airport.domain.loadingSupervisor.LoadingSupervisor;
 import com.airport.domain.loadingSupervisor.LoadingSupervisorDto;
 import com.airport.mapper.LoadingSupervisorMapper;
+import com.airport.service.AircraftService;
 import com.airport.service.LoadingSupervisorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ public class LoadingSupervisorController {
     private LoadingSupervisorService loadingSupervisorService;
     @Autowired
     private LoadingSupervisorMapper loadingSupervisorMapper;
+    @Autowired
+    private AircraftService aircraftService;
 
 
     @PostMapping(value = "createLoadingSupervisor")
@@ -27,4 +32,9 @@ public class LoadingSupervisorController {
         loadingSupervisorService.deleteLoadingSupervisor(id);
     }
 
+    @PutMapping(value = "assignAircraft")
+    public void assignAircraft(@RequestParam String flightNumber, Long id) {
+        loadingSupervisorService.assignAircraft(id, flightNumber);
+
+    }
 }

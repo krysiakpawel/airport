@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 
 @Entity (name = "LOADING_SUPERVISOR")
 @NoArgsConstructor
@@ -15,10 +16,13 @@ public class LoadingSupervisor {
     private String name;
     private String lastName;
     private List<Aircraft> aircraftList = new ArrayList<>();
+    private int planesToTurnaround;
+    private String email;
 
-    public LoadingSupervisor(String name, String lastName){
+    public LoadingSupervisor(String name, String lastName, String email){
         this.name = name;
         this.lastName = lastName;
+        this.email = email;
     }
 
     @Id
@@ -48,6 +52,14 @@ public class LoadingSupervisor {
 
     public void setLastName(String lastName){
         this.lastName = lastName;
+    }
+
+    @Column(name = "EMAIL")
+    public String getEmail(){
+        return email;
+    }
+    private void setEmail(String email){
+        this.email = email;
     }
 
     @OneToMany(

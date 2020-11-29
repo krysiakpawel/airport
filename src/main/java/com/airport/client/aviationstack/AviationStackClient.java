@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 @Component
 public class AviationStackClient {
 
@@ -32,19 +31,25 @@ public class AviationStackClient {
         URI uri = UriComponentsBuilder.fromHttpUrl(aviationStackEndpoint + "flights")
                 .queryParam("access_key", aviationStackKey)
                 .queryParam("arr_iata", "kef")
-                .queryParam("flight_status","landed")
-                .queryParam("limit", "1").build().encode().toUri();
+                .queryParam("flight_status","landed").build().encode().toUri();
 
-        Data aircraftResponse[] = restTemplate.getForObject(uri, Data[].class);
-//        return aircraftResponse;
+        AircraftDto[] landedAircrafts = restTemplate.getForObject(uri, AircraftDto[].class);
 
-        if (aircraftResponse != null) {
-            List<AircraftDto> aircrafts = new ArrayList<>();
-            for(Data data : aircraftResponse){
-                for(AircraftDto aircraftDto : AircraftDto[])
-
-            }
+        if(landedAircrafts!= null){
+            return Arrays.asList(landedAircrafts);
         }
         return new ArrayList<>();
+    }
+
+
+    public AircraftDto[] getData() {
+
+        URI uri = UriComponentsBuilder.fromHttpUrl(aviationStackEndpoint + "flights")
+                .queryParam("access_key", aviationStackKey)
+                .queryParam("arr_iata", "kef")
+                .queryParam("flight_status", "landed").build().encode().toUri();
+
+        Data data = restTemplate.getForObject(uri, Data.class);
+        return data.getAircraftDtoList();
     }
 }

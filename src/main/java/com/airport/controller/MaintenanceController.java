@@ -1,37 +1,41 @@
 package com.airport.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.airport.service.AircraftService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/maintenance")
 public class MaintenanceController {
 
+    @Autowired
+    private AircraftService aircraftService;
 
     @PutMapping(value = "maintenanceInProgress")
-    public boolean maintenanceInProgress(){
-        return true;
+    public void maintenanceInProgress(@RequestParam String flightNumber){
+        aircraftService.saveAircraft(aircraftService.setMaintenanceStatus(2, flightNumber));
     }
 
     @PutMapping(value = "requestForDelay")
-    public int requestForDelay(){
-        return 1;
+    public void requestForDelay(@RequestParam String flightNumber){
+        aircraftService.saveAircraft(aircraftService.setFlightStatus("delayed", flightNumber));
     }
 
     @PutMapping(value = "cancelPlane")
-    public int cancelPlane(){
-        return 2;
+    public void cancelPlane(@RequestParam String flightNumber){
+        aircraftService.saveAircraft(aircraftService.setFlightStatus("cancel", flightNumber));
     }
 
     @PutMapping(value = "closeMaintenance")
-    public int closeMaintenance(){
-        return 0;
+    public void closeMaintenance(@RequestParam String flightNumber){
+        aircraftService.saveAircraft(aircraftService.setMaintenanceStatus(3, flightNumber));
     }
 
     @GetMapping(value = "getAircraftStatus")
-    public int getAircraftStatus(){
-        return 1;
+    public void getAircraftStatus(){
+//
+        //
+        //
+
     }
 }

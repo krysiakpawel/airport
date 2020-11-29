@@ -5,14 +5,19 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Transactional
 @Repository
-public interface AircraftDao extends CrudRepository <Aircraft, Long> {
+public interface AircraftDao extends CrudRepository <Aircraft, Long>   {
 
     @Override
-    Aircraft save (Aircraft aircraft);
+    Aircraft save(Aircraft aircraft);
 
-    @Override
-    void deleteById(Long id);
+    void deleteByFlightNumber(String flightNumber);
+
+    Aircraft findAircraftByFlightNumber(String flightNumber);
+
+
+
 }

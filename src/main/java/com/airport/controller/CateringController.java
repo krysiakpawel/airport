@@ -1,27 +1,29 @@
 package com.airport.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.airport.service.AircraftService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/v1/catering")
 public class CateringController {
 
+    @Autowired
+    private AircraftService aircraftService;
+
     @PutMapping(value = "startLoadingCatering")
-    public int startLoadingCatering() {
-        return 1;
+    public void startLoadingCatering(@RequestParam String flightNumber) {
+        aircraftService.saveAircraft(aircraftService.setCateringStatus(2, flightNumber));
     }
 
     @PutMapping(value = "aircraftCateringFinished")
-    public int aircraftCateringFinished(){
-        return 2;
+    public void aircraftCateringFinished(@RequestParam String flightNumber){
+        aircraftService.saveAircraft(aircraftService.setCateringStatus(3, flightNumber));
     }
 
     @PutMapping(value = "requestMaintenance")
-    public boolean requestMaintenance(){
-        return true;
+    public void requestMaintenance(@RequestParam String flightNumber){
+        aircraftService.saveAircraft(aircraftService.setMaintenanceStatus(1, flightNumber));
     }
 
     @GetMapping(value = "getAircraftStatus")

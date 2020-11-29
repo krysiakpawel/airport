@@ -1,27 +1,29 @@
 package com.airport.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.airport.service.AircraftService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/passenger")
 public class PassengerController {
 
+    @Autowired
+    private AircraftService aircraftService;
+
     @PutMapping(value = "openBoarding")
-    public boolean openBoarding(){
-        return true;
+    public void openBoarding(@RequestParam String flightNumber){
+        aircraftService.saveAircraft(aircraftService.setPassengerStatus(2, flightNumber));
     }
 
     @PutMapping(value = "closeBoarding")
-    public boolean closeBoarding(){
-        return true;
+    public void closeBoarding(@RequestParam String flightNumber){
+        aircraftService.saveAircraft(aircraftService.setPassengerStatus(3, flightNumber));
     }
 
     @PutMapping(value = "requestForDelay")
-    public int requestForDelay(){
-        return 1;
+    public void requestForDelay(@RequestParam String flightNumber){
+        aircraftService.saveAircraft(aircraftService.setFlightStatus("delayed", flightNumber));
     }
 
     @GetMapping(value = "getAircraftStatus")
