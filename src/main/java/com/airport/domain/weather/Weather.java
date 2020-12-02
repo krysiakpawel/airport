@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Weather {
 
-
     private Long id;
     private LocalDateTime time;
     private double windSpeed;
@@ -42,7 +41,7 @@ public class Weather {
         this.time = LocalDateTime.now();
     }
 
-    @Column(name = "WIND_SPD_IN_KTS")
+    @Column(name = "WIND_SPEED_M_PER_SEC")
     public double getWindSpeed(){
         return windSpeed;
     }
@@ -66,8 +65,17 @@ public class Weather {
     public void setTemp(double temperature){
         this.temp = temperature;
     }
+
+    public String toString() {
+        String weatherInfo;
+        if (getWindSpeed() > 15.4) {
+            weatherInfo = "Aviation Weather Warning! Surface wind exceeds 30 knots.";
+        } else {
+            weatherInfo = "Weather is acceptable for further aviation operations";
+        }
+        return "Weather measured at " + getTime() + ": \n" +
+                "Temperature: " + getTemp() + ";\n" +
+                "Wind: " + getWindSpeed() + " m/s at direction of " + getWindDirection() + ".\n"
+                + weatherInfo;
+    }
 }
-
-
-// pogoda z api:
-//http://api.openweathermap.org/data/2.5/weather?q=Keflavik&units=metric&appid=5da5e3ff773f884ccb9b06551de599a5

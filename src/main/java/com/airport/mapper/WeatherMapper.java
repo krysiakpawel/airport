@@ -16,7 +16,3 @@ public class WeatherMapper {
     }
 }
 
-//    public WeatherDto mapToWeatherDto(final Weather weather){
-//        return new WeatherDto(
-//                );
-//}

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity(name = "AIRCRAFT")
+@Table(uniqueConstraints={@UniqueConstraint(columnNames = {"FLIGHT_NUMBER"})})
 @NoArgsConstructor
 public class Aircraft {
 
@@ -64,7 +65,7 @@ public class Aircraft {
         this.airline = airline;
     }
 
-    @Column(name = "FLIGHT_NUMBER")
+    @Column(unique = true, name = "FLIGHT_NUMBER")
     public String getFlightNumber(){
         return flightNumber;
     }
@@ -154,6 +155,15 @@ public class Aircraft {
     }
 
     public String toString(){
-        return "Flight: " + flightNumber + airline + ". ";
+        return "Flight " + getFlightNumber() + " from " + getAirline() + " status: \n"
+                + "Flight status: " + getFlightStatus() + ";\n"
+                + "ETA: " + getETA() +";\n"
+                + "Planned gate: " + getGate() + ";\n"
+                + "Passenger status: " + getPassengerStatus() + ";\n"
+                + "Cargo status: " + getCargoStatus() + ";\n"
+                + "Cleaning status: " + getCleaningStatus() + ";\n"
+                + "Maintenance status: " + getMaintenanceStatus() + ";\n"
+                + "Fueling status: " + getFuelingStatus() + ";\n"
+                + "Catering status: " + getCateringStatus() + ";\n";
     }
 }

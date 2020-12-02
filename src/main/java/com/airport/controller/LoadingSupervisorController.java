@@ -1,7 +1,5 @@
 package com.airport.controller;
 
-import com.airport.domain.aircraft.Aircraft;
-import com.airport.domain.loadingSupervisor.LoadingSupervisor;
 import com.airport.domain.loadingSupervisor.LoadingSupervisorDto;
 import com.airport.mapper.LoadingSupervisorMapper;
 import com.airport.service.AircraftService;
@@ -17,8 +15,6 @@ public class LoadingSupervisorController {
     private LoadingSupervisorService loadingSupervisorService;
     @Autowired
     private LoadingSupervisorMapper loadingSupervisorMapper;
-    @Autowired
-    private AircraftService aircraftService;
 
 
     @PostMapping(value = "createLoadingSupervisor")

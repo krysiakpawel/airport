@@ -27,6 +27,7 @@ public class CleaningController {
     }
 
     @GetMapping(value = "getAircraftStatus")
-    public void getAircraftStatus(){
+    public String getAircraftStatus(@RequestParam String flightNumber) {
+        return aircraftService.getAircraftStatus(flightNumber);
     }
 }

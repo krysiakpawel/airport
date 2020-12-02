@@ -26,22 +26,6 @@ public class AviationStackClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    public List<AircraftDto> getLandedAircrafts() {
-
-        URI uri = UriComponentsBuilder.fromHttpUrl(aviationStackEndpoint + "flights")
-                .queryParam("access_key", aviationStackKey)
-                .queryParam("arr_iata", "kef")
-                .queryParam("flight_status","landed").build().encode().toUri();
-
-        AircraftDto[] landedAircrafts = restTemplate.getForObject(uri, AircraftDto[].class);
-
-        if(landedAircrafts!= null){
-            return Arrays.asList(landedAircrafts);
-        }
-        return new ArrayList<>();
-    }
-
-
     public AircraftDto[] getData() {
 
         URI uri = UriComponentsBuilder.fromHttpUrl(aviationStackEndpoint + "flights")

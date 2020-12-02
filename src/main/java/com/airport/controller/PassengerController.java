@@ -27,6 +27,7 @@ public class PassengerController {
     }
 
     @GetMapping(value = "getAircraftStatus")
-    public void getAircraftStatus(){
+    public String getAircraftStatus(@RequestParam String flightNumber) {
+        return aircraftService.getAircraftStatus(flightNumber);
     }
 }

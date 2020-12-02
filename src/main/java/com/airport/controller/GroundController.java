@@ -10,6 +10,7 @@ import com.airport.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -70,8 +71,8 @@ public class GroundController {
     }
 
     @PutMapping(value = "requestForPushBack")
-    public void requestForPushBack(@RequestParam String flightNumber) {
-//        weatherService.saveWeather()
+    public void requestForPushBack(@RequestParam String flightNumber) throws SQLException {
+        weatherService.getLatestWeather().toString();
     }
 
     @DeleteMapping(value = "planeOnTaxiway")
@@ -80,7 +81,8 @@ public class GroundController {
     }
 
     @GetMapping(value = "getAircraftStatus")
-    public void getAircraftStatus(){
+    public String getAircraftStatus(@RequestParam String flightNumber){
+        return aircraftService.getAircraftStatus(flightNumber);
 
     }
 }

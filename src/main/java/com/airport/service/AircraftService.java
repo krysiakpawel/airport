@@ -21,8 +21,6 @@ public class AircraftService {
         aircraftDao.deleteByFlightNumber(flightNumber);
     }
 
-
-
     public Aircraft getFlight(String flightNumber){
         Aircraft aircraft = aircraftDao.findAircraftByFlightNumber(flightNumber);
         return aircraft;
@@ -71,8 +69,4 @@ public class AircraftService {
         Aircraft aircraft = getFlight(flightNumber);
         return aircraft.toString();
     }
-
-
-
-
 }

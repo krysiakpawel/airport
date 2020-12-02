@@ -27,11 +27,7 @@ public class FuelingController {
     }
 
     @GetMapping(value = "getAircraftStatus")
-    public int getAircraftStatus(){
-        return 1;
+    public String getAircraftStatus(@RequestParam String flightNumber) {
+        return aircraftService.getAircraftStatus(flightNumber);
     }
-
-
-
-
 }
