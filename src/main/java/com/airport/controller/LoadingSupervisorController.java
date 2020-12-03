@@ -2,7 +2,6 @@ package com.airport.controller;
 
 import com.airport.domain.loadingSupervisor.LoadingSupervisorDto;
 import com.airport.mapper.LoadingSupervisorMapper;
-import com.airport.service.AircraftService;
 import com.airport.service.LoadingSupervisorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,6 @@ public class LoadingSupervisorController {
     private LoadingSupervisorService loadingSupervisorService;
     @Autowired
     private LoadingSupervisorMapper loadingSupervisorMapper;
-
 
     @PostMapping(value = "createLoadingSupervisor")
     public void createLoadingSupervisor(@RequestBody LoadingSupervisorDto loadingSupervisorDto){

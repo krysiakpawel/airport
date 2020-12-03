@@ -6,11 +6,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 @Entity (name = "LOADING_SUPERVISOR")
 @NoArgsConstructor
-public class LoadingSupervisor {
+public class LoadingSupervisor{
 
     private Long id;
     private String name;
@@ -73,5 +72,13 @@ public class LoadingSupervisor {
     }
     private void setAircraftList(List<Aircraft> aircraftList){
         this.aircraftList = aircraftList;
+    }
+
+    public int getPlanesToTurnaround(){
+        return planesToTurnaround;
+    }
+    private void setPlanesToTurnaround(int planesToTurnaround){
+        this.planesToTurnaround = planesToTurnaround;
+
     }
 }

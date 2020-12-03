@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoadingSupervisorMapper {
 
-    public LoadingSupervisorDto mapToLoadingSupervisorDto(final LoadingSupervisor loadingSupervisor){
+    public static LoadingSupervisorDto mapToLoadingSupervisorDto(final LoadingSupervisor loadingSupervisor){
         return new LoadingSupervisorDto(loadingSupervisor.getName(), loadingSupervisor.getLastName(), loadingSupervisor.getEmail());
     }
 
-    public LoadingSupervisor mapToLoadingSupervisor(final LoadingSupervisorDto loadingSupervisorDto){
+    public static LoadingSupervisor mapToLoadingSupervisor(final LoadingSupervisorDto loadingSupervisorDto){
         return new LoadingSupervisor(loadingSupervisorDto.getName(),loadingSupervisorDto.getLastName(), loadingSupervisorDto.getEmail());
     }
 }
