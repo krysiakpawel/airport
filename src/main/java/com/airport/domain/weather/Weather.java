@@ -1,5 +1,6 @@
 package com.airport.domain.weather;
 ;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;

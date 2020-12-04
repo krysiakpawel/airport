@@ -8,11 +8,6 @@ group = 'com.airport'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
 
 repositories {
     mavenCentral()
@@ -20,12 +15,7 @@ repositories {
     maven { url 'https://repo.spring.io/snapshot' }
 }
 
-//ext {
-//    set('vaadinVersion', "14.4.2")
-//}
-
 dependencies {
- //   implementation 'com.vaadin:vaadin-spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
@@ -40,11 +30,6 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
 }
 
-//dependencyManagement {
-//    imports {
-//        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
-//    }
-//}
 
 test {
     useJUnitPlatform()
