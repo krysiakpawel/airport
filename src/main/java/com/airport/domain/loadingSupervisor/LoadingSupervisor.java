@@ -15,7 +15,6 @@ public class LoadingSupervisor{
     private String name;
     private String lastName;
     private List<Aircraft> aircraftList = new ArrayList<>();
-    private int planesToTurnaround;
     private String email;
 
     public LoadingSupervisor(String name, String lastName, String email){
@@ -74,11 +73,4 @@ public class LoadingSupervisor{
         this.aircraftList = aircraftList;
     }
 
-    public int getPlanesToTurnaround(){
-        return planesToTurnaround;
-    }
-    private void setPlanesToTurnaround(int planesToTurnaround){
-        this.planesToTurnaround = planesToTurnaround;
-
-    }
 }

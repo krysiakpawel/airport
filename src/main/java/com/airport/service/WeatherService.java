@@ -3,11 +3,12 @@ package com.airport.service;
 import com.airport.config.DbManager;
 import com.airport.domain.weather.Weather;
 import com.airport.domain.weather.dao.WeatherDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 @Service
@@ -16,31 +17,38 @@ public class WeatherService {
     @Autowired
     private WeatherDao weatherDao;
 
-    public Weather saveWeather(final Weather weather){
+    private static final Logger LOGGER = LoggerFactory.getLogger(WeatherDao.class);
+
+    public Weather saveWeather(final Weather weather) {
         return weatherDao.save(weather);
     }
-     public void deleteWeather(Long id){
-        weatherDao.deleteById(id);
-     }
 
-     public Weather getLatestWeather() throws SQLException {
+    public void deleteWeather(Long id) {
+        try {
+            weatherDao.deleteById(id);
+        } catch (Exception e) {
+            LOGGER.error("Could not find weather record with id: " + id + ". Error: " + e.getMessage());
+        }
+    }
 
-         try {
-             DbManager dbManager = DbManager.getInstance();
+    public Weather getLatestWeather() {
 
-             String sqlQueryLatestWeather = "SELECT * FROM weather ORDER BY weather_id DESC LIMIT 1;";
-             Statement statement = dbManager.getConnection().createStatement();
-             ResultSet resultSet = statement.executeQuery(sqlQueryLatestWeather);
-             resultSet.next();
-             return new Weather(
-                     resultSet.getDouble("wind_speed_m_per_sec"),
-                     resultSet.getInt("wind_dir"),
-                     resultSet.getDouble("temperature"));
+        try {
+            DbManager dbManager = DbManager.getInstance();
 
-         } catch (SQLException e) {
-             System.out.println("Error: " + e);
-             return new Weather();
+            String sqlQueryLatestWeather = "SELECT * FROM weather ORDER BY weather_id DESC LIMIT 1;";
+            Statement statement = dbManager.getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlQueryLatestWeather);
+            resultSet.next();
+            return new Weather(
+                    resultSet.getDouble("wind_speed_m_per_sec"),
+                    resultSet.getInt("wind_dir"),
+                    resultSet.getDouble("temperature"));
 
-         }
-     }
+        } catch (Exception e) {
+            LOGGER.error("Error while getting latest weather: " + e.getMessage());
+            return new Weather();
+
+        }
+    }
 }

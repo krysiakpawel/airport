@@ -1,7 +1,5 @@
 package com.airport.domain.aircraft;
 
-import com.airport.observer.AircraftsToTurnaround;
-import com.airport.observer.Observer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -12,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AircraftDto extends AircraftsToTurnaround {
+public class AircraftDto {
 
     @JsonProperty("flight_status")
     private String flightStatus;

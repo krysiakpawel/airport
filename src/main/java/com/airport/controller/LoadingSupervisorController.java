@@ -29,6 +29,10 @@ public class LoadingSupervisorController {
     @PutMapping(value = "assignAircraft")
     public void assignAircraft(@RequestParam String flightNumber, Long id) {
         loadingSupervisorService.assignAircraft(id, flightNumber);
-
     }
+
+
+
+
+
 }

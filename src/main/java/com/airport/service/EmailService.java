@@ -1,7 +1,6 @@
 package com.airport.service;
 
 import com.airport.domain.mail.Mail;
-import org.hibernate.query.criteria.internal.SelectionImplementor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
