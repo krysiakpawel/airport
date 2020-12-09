@@ -1,6 +1,5 @@
 package com.airport.mail;
 
-
 import com.airport.domain.mail.Mail;
 import com.airport.service.EmailService;
 import org.junit.Test;
@@ -23,9 +22,9 @@ public class MailTestSuite {
     @Mock
     private JavaMailSender javaMailSender;
 
-
     @Test
     public void shouldSendMail(){
+
         //Given
         Mail mail = new Mail("test@test", "testSubject", "testMessage");
 
@@ -38,7 +37,6 @@ public class MailTestSuite {
         emailService.send(mail);
 
         //Then
-
         verify(javaMailSender, times(1)).send(simpleMailMessage);
 
     }
