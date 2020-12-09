@@ -16,13 +16,13 @@ public class LoadingSupervisorController {
     private LoadingSupervisorMapper loadingSupervisorMapper;
 
     @PostMapping(value = "createLoadingSupervisor")
-    public void createLoadingSupervisor(@RequestBody LoadingSupervisorDto loadingSupervisorDto){
+    public void createLoadingSupervisor(@RequestBody LoadingSupervisorDto loadingSupervisorDto) {
         loadingSupervisorService.saveLoadingSupervisor(
                 loadingSupervisorMapper.mapToLoadingSupervisor(loadingSupervisorDto));
     }
 
     @DeleteMapping(value = "deleteLoadingSupervisor")
-    public void deleteLoadingSupervisor(@RequestParam Long id){
+    public void deleteLoadingSupervisor(@RequestParam Long id) {
         loadingSupervisorService.deleteLoadingSupervisor(id);
     }
 
@@ -30,9 +30,4 @@ public class LoadingSupervisorController {
     public void assignAircraft(@RequestParam String flightNumber, Long id) {
         loadingSupervisorService.assignAircraft(id, flightNumber);
     }
-
-
-
-
-
 }

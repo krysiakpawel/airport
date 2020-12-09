@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 
 @Transactional
 @Repository
-public interface AircraftDao extends CrudRepository <Aircraft, Long>   {
+public interface AircraftDao extends CrudRepository<Aircraft, Long> {
 
     @Override
     Aircraft save(Aircraft aircraft);
@@ -16,7 +16,5 @@ public interface AircraftDao extends CrudRepository <Aircraft, Long>   {
     void deleteByFlightNumber(String flightNumber);
 
     Aircraft findAircraftByFlightNumber(String flightNumber);
-
-
 
 }

@@ -19,5 +19,4 @@ public class WeatherDto {
 
     @JsonProperty("main")
     private Main main;
-
 }

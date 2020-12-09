@@ -37,7 +37,6 @@ public class OpenWeatherMapClient {
             WeatherDto weatherResponse = restTemplate.getForObject(uri, WeatherDto.class);
             LOGGER.info("Current weather data import successful.");
             return weatherResponse;
-
         } catch (Exception e) {
             LOGGER.error("Could not import current weather data", e.getMessage());
             return new WeatherDto();

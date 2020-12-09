@@ -17,7 +17,7 @@ public class EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public void send(final Mail mail){
+    public void send(final Mail mail) {
         LOGGER.info("Creating an e-mail...");
         try {
             SimpleMailMessage mailMessage = createMail(mail);
@@ -28,7 +28,7 @@ public class EmailService {
         }
     }
 
-    private SimpleMailMessage createMail(final Mail mail){
+    private SimpleMailMessage createMail(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());

@@ -8,10 +8,10 @@ import javax.transaction.Transactional;
 
 @Transactional
 @Repository
-public interface WeatherDao extends CrudRepository <Weather, Long> {
+public interface WeatherDao extends CrudRepository<Weather, Long> {
 
     @Override
-    Weather save (Weather weather);
+    Weather save(Weather weather);
 
     @Override
     void deleteById(Long id);

@@ -12,22 +12,22 @@ public class MaintenanceController {
     private AircraftService aircraftService;
 
     @PutMapping(value = "maintenanceInProgress")
-    public void maintenanceInProgress(@RequestParam String flightNumber){
+    public void maintenanceInProgress(@RequestParam String flightNumber) {
         aircraftService.saveAircraft(aircraftService.setMaintenanceStatus(2, flightNumber));
     }
 
     @PutMapping(value = "requestForDelay")
-    public void requestForDelay(@RequestParam String flightNumber){
+    public void requestForDelay(@RequestParam String flightNumber) {
         aircraftService.saveAircraft(aircraftService.setFlightStatus("delayed", flightNumber));
     }
 
     @PutMapping(value = "cancelPlane")
-    public void cancelPlane(@RequestParam String flightNumber){
+    public void cancelPlane(@RequestParam String flightNumber) {
         aircraftService.saveAircraft(aircraftService.setFlightStatus("cancel", flightNumber));
     }
 
     @PutMapping(value = "closeMaintenance")
-    public void closeMaintenance(@RequestParam String flightNumber){
+    public void closeMaintenance(@RequestParam String flightNumber) {
         aircraftService.saveAircraft(aircraftService.setMaintenanceStatus(3, flightNumber));
     }
 

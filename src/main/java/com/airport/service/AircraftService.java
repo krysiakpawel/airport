@@ -181,7 +181,6 @@ public class AircraftService {
         return null;
     }
 
-
     public String planeOnTaxiway(String flightNumber) {
         try {
             Aircraft aircraft = getFlight(flightNumber);

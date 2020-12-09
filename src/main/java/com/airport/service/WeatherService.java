@@ -20,7 +20,11 @@ public class WeatherService {
     private static final Logger LOGGER = LoggerFactory.getLogger(WeatherDao.class);
 
     public Weather saveWeather(final Weather weather) {
-        return weatherDao.save(weather);
+        if (weather != null) {
+            return weatherDao.save(weather);
+        } else {
+            return new Weather();
+        }
     }
 
     public void deleteWeather(Long id) {

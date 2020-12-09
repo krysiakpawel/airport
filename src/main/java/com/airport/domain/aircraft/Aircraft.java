@@ -97,11 +97,11 @@ public class Aircraft {
     }
 
     @Column(name = "IS_READY")
-    public boolean getIsReady(){
+    public boolean getIsReady() {
         return isReady;
     }
 
-    public void setIsReady(boolean isReady){
+    public void setIsReady(boolean isReady) {
         this.isReady = isReady;
     }
 

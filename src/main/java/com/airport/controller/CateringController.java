@@ -17,12 +17,12 @@ public class CateringController {
     }
 
     @PutMapping(value = "aircraftCateringFinished")
-    public void aircraftCateringFinished(@RequestParam String flightNumber){
+    public void aircraftCateringFinished(@RequestParam String flightNumber) {
         aircraftService.saveAircraft(aircraftService.setCateringStatus(3, flightNumber));
     }
 
     @PutMapping(value = "requestMaintenance")
-    public void requestMaintenance(@RequestParam String flightNumber){
+    public void requestMaintenance(@RequestParam String flightNumber) {
         aircraftService.saveAircraft(aircraftService.setMaintenanceStatus(1, flightNumber));
     }
 

@@ -76,6 +76,5 @@ public class GroundController {
     @GetMapping(value = "getAircraftStatus")
     public String getAircraftStatus(@RequestParam String flightNumber) {
         return aircraftService.getAircraftStatus(flightNumber);
-
     }
 }

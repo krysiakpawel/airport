@@ -1,6 +1,5 @@
 package com.airport.domain.loadingSupervisor;
 
-
 import lombok.Getter;
 
 @Getter
@@ -16,5 +15,4 @@ public class LoadingSupervisorDto {
         this.lastName = lastName;
         this.email = email;
     }
-
 }

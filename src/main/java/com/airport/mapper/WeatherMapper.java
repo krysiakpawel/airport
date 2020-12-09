@@ -18,18 +18,22 @@ public class WeatherMapper {
             return new Weather(
                     weatherDto.getWind().getSpeed(),
                     weatherDto.getWind().getDeg(),
-                    weatherDto.getMain().getTemp()
-            );
+                    weatherDto.getMain().getTemp());
         } catch (Exception e) {
-            LOGGER.error("Could not map weather. Error: ", e );
+            LOGGER.error("Could not map weatherDto to weather. Error: ", e);
             return null;
         }
     }
 
-    public static WeatherDto mapToWeatherDto(final Weather weather){
-        return new WeatherDto(
-                new Wind(weather.getWindSpeed(),weather.getWindDirection()),
-                new Main(weather.getTemp()));
+    public static WeatherDto mapToWeatherDto(final Weather weather) {
+        try {
+            return new WeatherDto(
+                    new Wind(weather.getWindSpeed(), weather.getWindDirection()),
+                    new Main(weather.getTemp()));
+        } catch (Exception e) {
+            LOGGER.error("Could not map weather to mweatherDto. Error: ", e);
+            return null;
+        }
     }
 }
 

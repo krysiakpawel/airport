@@ -12,17 +12,17 @@ public class CleaningController {
     private AircraftService aircraftService;
 
     @PutMapping(value = "startAircraftCleaning")
-    public void startAircraftCleaning(@RequestParam String flightNumber){
+    public void startAircraftCleaning(@RequestParam String flightNumber) {
         aircraftService.saveAircraft(aircraftService.setCleaningStatus(2, flightNumber));
     }
 
     @PutMapping(value = "finishAircraftCleaning")
-    public void finishAircraftCleaning(@RequestParam String flightNumber){
+    public void finishAircraftCleaning(@RequestParam String flightNumber) {
         aircraftService.saveAircraft(aircraftService.setCleaningStatus(3, flightNumber));
     }
 
     @PutMapping(value = "requestForMaintenance")
-    public void requestForMaintenance(@RequestParam String flightNumber){
+    public void requestForMaintenance(@RequestParam String flightNumber) {
         aircraftService.saveAircraft(aircraftService.setMaintenanceStatus(1, flightNumber));
     }
 

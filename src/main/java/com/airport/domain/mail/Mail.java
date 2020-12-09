@@ -1,6 +1,5 @@
 package com.airport.domain.mail;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

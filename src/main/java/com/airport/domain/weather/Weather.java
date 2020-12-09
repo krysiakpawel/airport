@@ -1,6 +1,5 @@
 package com.airport.domain.weather;
-;
-import lombok.AllArgsConstructor;
+
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -16,7 +15,7 @@ public class Weather {
     private int windDirection;
     private double temp;
 
-    public Weather(double windSpeed, int windDirection, double temp){
+    public Weather(double windSpeed, int windDirection, double temp) {
         this.time = LocalDateTime.now();
         this.windSpeed = windSpeed;
         this.windDirection = windDirection;
@@ -26,44 +25,47 @@ public class Weather {
     @Id
     @GeneratedValue
     @Column(name = "WEATHER_ID")
-    public Long getId(){
+    public Long getId() {
         return id;
     }
-    public void setId(Long id){
+
+    public void setId(Long id) {
         this.id = id;
     }
 
     @Column(name = "TIME")
-    public LocalDateTime getTime(){
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time){
+    public void setTime(LocalDateTime time) {
         this.time = LocalDateTime.now();
     }
 
     @Column(name = "WIND_SPEED_M_PER_SEC")
-    public double getWindSpeed(){
+    public double getWindSpeed() {
         return windSpeed;
     }
 
-    public void setWindSpeed(double windSpeed){
+    public void setWindSpeed(double windSpeed) {
         this.windSpeed = windSpeed;
     }
 
     @Column(name = "WIND_DIR")
-    public int getWindDirection(){
+    public int getWindDirection() {
         return windDirection;
     }
-    public void setWindDirection(int windDirection){
+
+    public void setWindDirection(int windDirection) {
         this.windDirection = windDirection;
     }
 
     @Column(name = "TEMPERATURE")
-    public double getTemp(){
+    public double getTemp() {
         return temp;
     }
-    public void setTemp(double temperature){
+
+    public void setTemp(double temperature) {
         this.temp = temperature;
     }
 

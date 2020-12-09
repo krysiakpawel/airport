@@ -27,8 +27,12 @@ public class LoadingSupervisorService {
 
     public LoadingSupervisor saveLoadingSupervisor(final LoadingSupervisor loadingSupervisor) {
         try {
-            LOGGER.info("Loading supervisor " + loadingSupervisor.getName() + " " + loadingSupervisor.getLastName() + " saved successfully.");
-            return loadingSupervisorDao.save(loadingSupervisor);
+            if (loadingSupervisor != null) {
+                LOGGER.info("Loading supervisor " + loadingSupervisor.getName() + " " + loadingSupervisor.getLastName() + " saved successfully.");
+                return loadingSupervisorDao.save(loadingSupervisor);
+            } else {
+                return new LoadingSupervisor();
+            }
         } catch (Exception e) {
             LOGGER.error("Saving error during saving loading supervisor", e.getMessage());
             return new LoadingSupervisor();
@@ -50,7 +54,7 @@ public class LoadingSupervisorService {
             LoadingSupervisor loadingSupervisor = loadingSupervisorDao.findById(id).get();
             LOGGER.info("Getting loading supervisor.");
             return loadingSupervisor;
-        } catch (Exception e ){
+        } catch (Exception e) {
             LOGGER.error("Could not find loading supervisor with id " + id + ". Error: ", e.getMessage());
             return new LoadingSupervisor();
         }
@@ -71,8 +75,8 @@ public class LoadingSupervisorService {
                             aircraft.getFlightStatus() + " at " + aircraft.getETA() + " on gate " + aircraft.getGate() + "."));
             LOGGER.info("Assigning completed.");
             return aircraft;
-        }catch (Exception e) {
-            LOGGER.error("Could not assign flight " + flightNumber + ". Error: ",  e.getMessage());
+        } catch (Exception e) {
+            LOGGER.error("Could not assign flight " + flightNumber + ". Error: ", e.getMessage());
             return new Aircraft();
         }
     }
