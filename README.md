@@ -32,7 +32,7 @@ At this point project imports real-time data of landed aircrafts on Keflavik Air
 and real-time weather information from the same area, to determine possibilities for aviation operation. 
 Project covers (simplyfied) working daily basis routine at the airport, and covers following departments 
 - Ground, Cleaning, Catering, Fueling, Passeneger and Maintenance. After creating a Loading Supervisor in DB,
-it is possible to assign specific aircraft to turnaround, which leads to sending to assigned Loading SUpervisor an e-mail
+it is possible to assign specific aircraft to turnaround, which leads to sending to assigned Loading Supervisor an e-mail
 notification about aircraft information. If the aircraft is ready to be push back onto taxiway, program automatically 
 checks latest weather to specify if further aviation operations are possible. Due to used Scheduler, weather is 
 updated every 5 minutes to provide always most accurate weather. 
